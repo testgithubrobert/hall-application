@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="backend-developer" content="">
+        <meta name="frontend-developer" content="">
+        <title>Document</title>
+        <link rel="stylesheet" href="../public/stylesheets/posts.page.css">
+        <script src="../../../src/view/public/script/posts.page.js" type="module" defer></script>
+    </head>
+    <body> 
+        <nav>
+            <div>
+                <span>PostHall</span>
+                <a href="./people.page.html"><button type="button" id="people" title="people">People</button></a>
+            </div>
+            <div style="justify-content: flex-end;">
+                <a href="./apply.page.html" title="sign in new account">sign in </a>
+            </div>
+        </nav>
+        <header>
+            <div>
+                <h1>Posts</h1>
+            </div> 
+            <div style="justify-content: flex-end;">
+                <button type="button" class="display-post-form" id="display-post-form" title="New Post">New Post</button>
+            </div>
+        </header>
+        <main>
+            <form accept-charset="UTF-8" method="post" action="#" id="">
+                <div>
+                    <br>
+                    <h3>New Post</h3>
+                <br>
+                <input type="text" name="title" id="title" required maxlength="50" placeholder="title...">
+                <p>Keep the title short, less than 50 characters</p>
+                <br>
+                <textarea name="content" id="content" cols="30" rows="10" placeholder="type here..." maxlength="400" required></textarea>
+                <br>
+                <div>
+                    <button type="submit" id="submit" class="submit" name="submit" title="post post">post</button>
+                    <button type="reset" id="cancel" class="cancel" name="cancel" title="cancel post">cancel</button>
+                </div>
+                </div>
+            </form>
+        </main>
+        <footer>  
+            <div>
+                <ul>
+                    <li><a href="./about.page.html">About</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <!-- https://github.com/testgithubrobert/blog-api -->
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+            <div style="justify-content: flex-end;">
+                <span>Logged in user profile: <a href="./profile.page.html" id="logged-in-user">none</a></span>
+            </div>
+        </footer>
+    </body>
+</html>
