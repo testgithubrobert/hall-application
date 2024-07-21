@@ -6,7 +6,8 @@
         <meta name="backend-developer" content="">
         <meta name="frontend-developer" content="">
         <title>Document</title>
-        <link rel="stylesheet" href="../public/stylesheets/apply.page.css">
+        <link rel="stylesheet" href="../../stylesheets/apply.page.css">
+        <script type="module" src="../../script/apply.page.js" defer></script>
     </head>
     <body>
         <nav>
@@ -14,7 +15,7 @@
                 <span>PostHall</span>
             </div>
             <div style="justify-content: flex-end;">
-                <a href="./login.page.html" title="log into account">Log In</a>
+                <a href="http://127.0.0.1:3000/application.com/login?query=login" title="log into account">Log In</a>
             </div>
         </nav>
         <main>
@@ -22,19 +23,19 @@
                 <br>
                 <h1>sign in </h1>
                 <br>
-                <input type="text" name="first name" placeholder="*First name" id="first name" required title="first name" >
+                <input type="text" name="first_name" placeholder="*First name" id="first_name" required title="first name" >
                 <br>
                 <br>
-                <input type="text" name="last name" placeholder="*Last name" id="last name" required title="last name">
+                <input type="text" name="last_name" placeholder="*Last name" id="last_name" required title="last name">
                 <br>
                 <br>
                 <input type="email" name="email" placeholder="*Email" id="email" required title=" Email">
                 <br>
                 <br>
-                <input type="password" name="password" placeholder="*Password" id="password" required title="Password">
+                <input type="password" name="password" placeholder="*Password" id="password" required title="Password" maxlength="15">
                 <br>
                 <br>
-                <span>You can log into an  if available!</span>
+                <span class="password-strength">Enter a strong password</span>
                 <br>
                 <br>
                 <button type="submit" id="submit" class="submit" name="submit" title="submit">sign in </button>
@@ -43,8 +44,8 @@
         <footer>
             <div>
                 <ul>
-                    <li><a href="./posts.page.html">&#10094</a></li>
-                    <li><a href="./about.page.html">About</a></li>
+                    <li><a href="http://127.0.0.1:3000/application.com/posts?query=posts">&#10094</a></li>
+                    <li><a href="http://127.0.0.1:3000/application.com/about?query=about">About</a></li>
                     <li><a href="#">GitHub</a></li>
                     <li><a href="#">Facebook</a></li>
                 </ul>

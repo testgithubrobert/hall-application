@@ -75,7 +75,7 @@ body > main {
 }
 body > main> section {
     height: 7em;
-    width: min(100%, 40em);
+    width: min(100%, 50em);
     border: 1px solid #eee;
     display: flex;
     justify-content: center;
@@ -92,7 +92,7 @@ body > main> section > .profile-image > img {
 }
 body > main> section > .profile-information {
     height: 7em;
-    width: min(100%, 33em);
+    width: min(100%, 43em);
     display: flex;
     justify-content: center;
     gap: 0em;
@@ -107,6 +107,7 @@ body > main> section > p {
 body > main> section > div > button {
     height: 2em;
     width: 5em;
+    margin-top: 13px;
 }
 
 /* footer */

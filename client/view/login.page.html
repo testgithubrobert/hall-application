@@ -6,7 +6,7 @@
         <meta name="backend-developer" content="">
         <meta name="frontend-developer" content="">
         <title>Document</title>
-        <link rel="stylesheet" href="../public/stylesheets/login.page.css">
+        <link rel="stylesheet" href="../../stylesheets/login.page.css">
     </head>
     <body>
         <nav>
@@ -14,7 +14,7 @@
                 <span>PostHall</span>
             </div>
             <div style="justify-content: flex-end;">
-                <a href="./apply.page.html" title="sign in new account">sign in </a>
+                <a href="http://127.0.0.1:3000/application.com/signin?query=signin" title="sign in new account">sign in </a>
             </div>
         </nav>
         <main>
@@ -25,10 +25,10 @@
                 <input type="email" name="email" placeholder="*Email" id="email" required title="email">
                 <br>
                 <br>
-                <input type="password" name="password" placeholder="*Password" id="password" required title="password">
+                <input type="password" name="password" placeholder="*Password" id="password" required title="password" maxlength="15">
                 <br>
                 <br>
-                <span>You can sign in for a new  if not available!</span>
+                <span>You can sign in for a new account if not available!</span>
                 <br>
                 <br>
                 <button type="submit" id="submit" class="submit" name="submit" title="log in">Log In</button>
@@ -37,8 +37,8 @@
         <footer>  
             <div>
                 <ul>
-                    <li><a href="./posts.page.html">&#10094</a></li>
-                    <li><a href="./about.page.html">About</a></li>
+                    <li><a href="http://127.0.0.1:3000/application.com/posts?query=posts">&#10094</a></li>
+                    <li><a href="http://127.0.0.1:3000/application.com/about?query=about">About</a></li>
                     <li><a href="#">GitHub</a></li>
                     <li><a href="#">Facebook</a></li>
                 </ul>

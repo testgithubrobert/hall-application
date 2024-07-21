@@ -8,12 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
+const path = require('node:path')
 let controller = {
     NotFound: function (request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             response.statusCode = 404;
             response.contentType = ['text/plain', 'application/json', 'text/html'];
-            request ? global.setTimeout(() => __awaiter(this, void 0, void 0, function* () { return yield response.sendStatus(404); }), 500) : (function () {
+            request ? global.setTimeout(() => __awaiter(this, void 0, void 0, function* () { return yield response.sendFile(path.join(__dirname, '../../../client/view/404.page.html')); }), 500) : (function () {
                 return __awaiter(this, void 0, void 0, function* () { return; });
             }());
         });

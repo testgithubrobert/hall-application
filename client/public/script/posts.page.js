@@ -13,3 +13,7 @@ cancelPost.addEventListener('click', (e) => {
     // hide form
     postForm.style.width = `min(0%, 0%)`;
 });
+
+const data = decodeURIComponent(document.cookie)
+console.log(document.cookie)
+console.log(data)

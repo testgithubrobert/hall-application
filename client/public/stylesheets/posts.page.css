@@ -92,7 +92,7 @@ body > header :where(div) :is(button) {
 
 /* main */
 body > main {
-    min-height: 25em;
+    height: 25em;
     width: min(100%, 100%);
     display: flex;
     align-items: center;
@@ -101,9 +101,11 @@ body > main {
     gap: 1em;
     border: 1px solid #eee;
     position: relative;
+    background-color: hsl(0, 0%, 97%);
+    overflow-y: scroll;
 }
 body > main :where(form) {
-    height: 24em;
+    height: 100%;
     /* width: min(100%, 100%); */
     width: min(100%, 0%);
     z-index: 2;
@@ -179,5 +181,62 @@ body > footer > div :where(span) {
     color: #000000;
     text-decoration: none;
     margin-right: 1em;
+    font-size: .8em;
+}
+
+/* post */
+body > main :is(section) {
+    min-height: 14em;
+    width: min(100%, 70em);
+    border-radius: .2em;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, .1);
+}
+body > main :is(section) > article {
+    min-height: 4.6em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5em
+}
+body > main :is(section) > article :where(p) {
+    font-weight: calc(250 + 200);
+    color: hsl(0, 0%, 20%);
+    text-decoration: none;
+    font-size: .9em;
+    margin-left: .4em
+}
+body > main :is(section) > article :where(div) {
+    height: 3em;
+    width: 3em;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-left: .4em;
+}
+body > main :is(section) > article :where(div) > img {
+    height: 3em;
+    width: 3em;
+    border-radius: 100%;
+}
+body > main :is(section) > article :where(fieldset) {
+    height: 2.5em;
+    width: min(50%, 15em);
+    border: none
+}
+body > main :is(section) > article :where(fieldset) > span {
+    font-weight: calc(250 + 200);
+    color: hsl(0, 0%, 20%);
+    text-decoration: none;
+    font-size: .8em;
+}
+body > main :is(section) > article > button {
+    height: 2em;
+    margin-left: .4em;
+    width: 5em;
+}
+body > main :is(section) > article > span {
+    font-weight: calc(250 + 200);
+    color: hsl(0, 0%, 20%);
+    text-decoration: none;
     font-size: .8em;
 }
