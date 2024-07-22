@@ -17,7 +17,7 @@ router.route('/')
             request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../../client/view/apply.page.html',)), 1000) : (async function(){ return }());
     }).post(async (request, response) => {
         response.contentType = 'text/html';
-            response.statusCode = 200;
+            response.statusCode = 201;
 
         // hash user accounts password before registering the account to the api database
         const salt = await bcrypt.genSalt(10);
@@ -39,7 +39,7 @@ router.route('/')
                 // create new user history
                 await pool_connection.query(`INSERT INTO users_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${2}, ${5}, ${date})`);
 
-                response.json({"message": "account registered well!"})
+                response.status(201).send('You can now log into your account <a href="http://127.0.0.1:3000/application.com/login?query=login">Log in</a>')
             }
 
         } catch (error) {

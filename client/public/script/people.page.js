@@ -1,7 +1,7 @@
 "use strict";
 
 (async function(){
-    const usersData = await fetch('http://127.0.0.1:3000/application.com/api/registered-users/data', {
+    const usersData = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', {
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -9,7 +9,6 @@
     });
 
     let usersJsonData = await usersData.json();
-    console.log(usersJsonData)
 
     usersJsonData.forEach(element => {
         const section = window.document.createElement('section');

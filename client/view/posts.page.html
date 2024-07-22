@@ -12,121 +12,42 @@
     <body> 
         <nav>
             <div>
-                <span>PostHall</span>
+                <span>Posts</span>
                 <a href="http://127.0.0.1:3000/application.com/people?query=people"><button type="button" id="people" title="people">People</button></a>
             </div>
             <div style="justify-content: flex-end;">
-                <a href="http://127.0.0.1:3000/application.com/signin?query=signin"sign in new account">sign in </a>
-            </div>
-        </nav>
-        <header>
-            <div>
-                <h1>Posts</h1>
-            </div> 
-            <div style="justify-content: flex-end;">
                 <button type="button" class="display-post-form" id="display-post-form" title="New Post">New Post</button>
             </div>
-        </header>
+        </nav>
+        <form accept-charset="UTF-8" method="post" action="#" id="">
+            <div>
+                <br>
+                <h3>New Post</h3>
+            <br>
+            <input type="text" name="title" id="title" required maxlength="50" placeholder="title...">
+            <p>Keep the title short, less than 50 characters</p>
+            <br>
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="type here..." maxlength="500" required></textarea>
+            <br>
+            <br>
+            <input type="text" name="postedUser" id="postedUser" required maxlength="50" placeholder="posted by...">
+                <br>
+                <br>
+            <div>
+                <button type="submit" id="submit" class="submit" name="submit" title="post post">post</button>
+                <button type="reset" id="cancel" class="cancel" name="cancel" title="cancel post">cancel</button>
+            </div>
+            </div>
+        </form>
         <main>
-            <form accept-charset="UTF-8" method="post" action="#" id="">
-                <div>
-                    <br>
-                    <h3>New Post</h3>
-                <br>
-                <input type="text" name="title" id="title" required maxlength="50" placeholder="title...">
-                <p>Keep the title short, less than 50 characters</p>
-                <br>
-                <textarea name="content" id="content" cols="30" rows="10" placeholder="type here..." maxlength="500" required></textarea>
-                <br>
-                <div>
-                    <button type="submit" id="submit" class="submit" name="submit" title="post post">post</button>
-                    <button type="reset" id="cancel" class="cancel" name="cancel" title="cancel post">cancel</button>
-                </div>
-                </div>
-            </form>
-            <br>
-            <br>
-            <br>
-            <br>
-            <section>
-                <article>
-                    <div>
-                        <img src="../../img/profile-image.png" alt="">
-                    </div>
-                    <fieldset >
-                        <h4>John Doe</h4>
-                        <span>16 minutes ago</span>
-                    </fieldset>
-                </article>
-                <article>
-                    <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus soluta temporibus sequi a! Quia enim accusamus est dignissimos, deleniti ipsa eum illo voluptate cupiditate nostrum blanditiis, a dolores inventore laudantium sit dolor quasi alias corporis, delectus quas accusantium recusandae harum? Aliquam veritatis asperiores sequi! Est iure fugiat minima quod odio perferendis voluptatem cum assumenda fugit vel, corrupti, dicta quis consequuntur repudiandae, quasi ipsum tempore rem!</p>
-                </article>
-                <article>
-                    <button type="button">Like</button>
-                    <span>12</span>
-                </article>
-            </section>
-            <section>
-                <article>
-                    <div>
-                        <img src="../../img/profile-image.png" alt="">
-                    </div>
-                    <fieldset >
-                        <h4>John Doe</h4>
-                        <span>16 minutes ago</span>
-                    </fieldset>
-                </article>
-                <article>
-                    <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus soluta temporibus sequi a! Quia enim accusamus est dignissimos, deleniti ipsa eum illo voluptate cupiditate nostrum blanditiis, a dolores inventore laudantium sit dolor quasi alias corporis, delectus quas accusantium recusandae harum? Aliquam veritatis asperiores sequi! Est iure fugiat minima quod odio perferendis voluptatem cum assumenda fugit vel, corrupti, dicta quis consequuntur repudiandae, quasi ipsum tempore rem!</p>
-                </article>
-                <article>
-                    <button type="button">Like</button>
-                    <span>12</span>
-                </article>
-            </section>
-            <section>
-                <article>
-                    <div>
-                        <img src="../../img/profile-image.png" alt="">
-                    </div>
-                    <fieldset >
-                        <h4>John Doe</h4>
-                        <span>16 minutes ago</span>
-                    </fieldset>
-                </article>
-                <article>
-                    <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus soluta temporibus sequi a! Quia enim accusamus est dignissimos, deleniti ipsa eum illo voluptate cupiditate nostrum blanditiis, a dolores inventore laudantium sit dolor quasi alias corporis, delectus quas accusantium recusandae harum? Aliquam veritatis asperiores sequi! Est iure fugiat minima quod odio perferendis voluptatem cum assumenda fugit vel, corrupti, dicta quis consequuntur repudiandae, quasi ipsum tempore rem!</p>
-                </article>
-                <article>
-                    <button type="button">Like</button>
-                    <span>12</span>
-                </article>
-            </section>
-            <section>
-                <article>
-                    <div>
-                        <img src="../../img/profile-image.png" alt="">
-                    </div>
-                    <fieldset >
-                        <h4>John Doe</h4>
-                        <span>16 minutes ago</span>
-                    </fieldset>
-                </article>
-                <article>
-                    <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus soluta temporibus sequi a! Quia enim accusamus est dignissimos, deleniti ipsa eum illo voluptate cupiditate nostrum blanditiis, a dolores inventore laudantium sit dolor quasi alias corporis, delectus quas accusantium recusandae harum? Aliquam veritatis asperiores sequi! Est iure fugiat minima quod odio perferendis voluptatem cum assumenda fugit vel, corrupti, dicta quis consequuntur repudiandae, quasi ipsum tempore rem!</p>
-                </article>
-                <article>
-                    <button type="button">Like</button>
-                    <span>12</span>
-                </article>
-            </section>
             <br>
         </main>
         <footer>  
             <div>
                 <ul>
                     <li><a href="http://127.0.0.1:3000/application.com/about?query=about">About</a></li>
-                    <li><a href="#">GitHub</a></li>
+                    <li><a href="http://127.0.0.1:3000/application.com/signin?query=signin"sign in new account">sign in </a></li>
+                <li><a href="#">GitHub</a></li>
                     <!-- https://github.com/testgithubrobert/blog-api -->
                     <li><a href="#">Facebook</a></li>
                 </ul>

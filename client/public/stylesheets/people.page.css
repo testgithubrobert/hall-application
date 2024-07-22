@@ -98,7 +98,7 @@ body > main> section > .profile-information {
     gap: 0em;
     flex-direction: column;
 }
-body > main> section > p {
+body > main> section > div >span {
     font-weight: calc(250 + 200);
     color: #000000;
     text-decoration: none;

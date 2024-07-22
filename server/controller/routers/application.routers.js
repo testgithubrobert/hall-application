@@ -2,19 +2,15 @@ const express = require('express');
 const router = express.Router();
 const path = require('node:path');
 
-router.get('/posts', (request, response) => {
-    response.contentType = 'text/html';
-        response.statusCode = 200;
-
-        request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/posts.page.html',)), 1000) : (async function(){ return }());
-});
-
+// posts
 router.get('/', (request, response) => {
     response.contentType = 'text/html';
         response.statusCode = 200;
 
         request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/posts.page.html',)), 1000) : (async function(){ return }());
 });
+
+router.use('/posts', require('./handler/router.handler'));
 
 // people
 router.get('/people', (request, response) => {
@@ -39,7 +35,8 @@ router.use('/signin', require('../auth/singin/application.signin'));
 router.use('/login', require('../auth/login/application.login'));
 
 // api data
-router.use('/api/registered-users/data', require('../../../api/routers/users.api.routers'));
+router.use('/api/registered-users-data/users', require('../../../api/routers/users.api.routers'));
+router.use('/api/posted-posts-data/posts', require('../../../api/routers/posts.api.routers'));
 
 // profile
 router.get('/profile', (request, response) => {

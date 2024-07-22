@@ -1,30 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const path = require('node:path');
+var { v4:uuid } = require('uuid');
+const pool_connection = require('../../../model/connection/model.connection');
 
-// people
-router.get('/people', (request, response) => {
-    global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/people.page.html',)), 1000)
-});
+// handle post created on db
+let format = require('date-fns').format;
+const date = JSON.stringify(format(new Date(), "dd/MM/yyyy\tHH:mm:ss"));
 
-// about
-router.get('/about', (request, response) => {
-    global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/about.page.html',)), 1000)
-});
+router.route('/')
+    .get((request, response) => {
+        response.contentType = 'text/html';
+            response.statusCode = 200;
 
-// sign in
-router.get('/signin', (request, response) => {
-    global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/apply.page.html',)), 1000)
-});
+            request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../../client/view/posts.page.html',)), 1000) : (async function(){ return }());
+    })
+    .post(async (request, response) => {
+        response.contentType = 'text/html';
+            response.statusCode = 201;
 
-// login
-router.get('/login', (request, response) => {
-    global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/login.page.html',)), 1000)
-});
+            // create new post
+            await pool_connection.query(`INSERT INTO posts VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title)}, ${JSON.stringify(request.body.content)}, ${0})`);
 
-// profile
-router.get('/profile', (request, response) => {
-    global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/profile.page.html',)), 1000)
-});
+            // create posts history for those posted
+            await pool_connection.query(`INSERT INTO posts_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title)}, ${JSON.stringify(request.body.content)}, ${0})`);
+            request ? global.setTimeout(() => response.redirect('/application.com/posts/'), 1000) : (async function(){ return }());
+    });
 
 module.exports = router;

@@ -17,15 +17,16 @@ body {
 
 /* navbar */
 body > nav {
-    height: 3em;
-    width: min(100%, 80em);
+    height: 3.5em;
+    width: min(100%, 100%);
     background-color: hsl(0, 0%, 90%);
-    border-radius: .4em;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid hsl(0, 0%, 85%);
-    margin-top: .8em;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
 }
 body > nav :is(div) {
     height: 100%;
@@ -69,30 +70,27 @@ body > nav :is(div) > button {
 }
 
 /* header */
-body > header {
+body > main > header {
     min-height: 5em;
     width: min(100%, 80em);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1em;
+    position: sticky;
+    top: 3em
 }
-body > header :where(div) {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    align-items: center;
-}
-body > header :where(div) :is(button) {
+
+#display-post-form {
     height: 2.5em;
-    width: min(100%, 8em);
+    width: min(100%, 10em);
     padding: 1px;
-    margin-left: 1em;
+    border: 1px solid #101010
 }
 
 /* main */
 body > main {
-    height: 25em;
+    flex: 1 0 auto;
     width: min(100%, 100%);
     display: flex;
     align-items: center;
@@ -102,41 +100,40 @@ body > main {
     border: 1px solid #eee;
     position: relative;
     background-color: hsl(0, 0%, 97%);
-    overflow-y: scroll;
 }
-body > main :where(form) {
-    height: 100%;
+body :where(form) {
+    height: 30em;
     /* width: min(100%, 100%); */
     width: min(100%, 0%);
     z-index: 2;
     background-color: #fff;
     overflow: hidden;
     position: absolute;
-    top: 0px;
     right: 0px;
+    bottom: 0px;
     background-color: hsl(0, 0%, 98%)
 }
-body > main :where(form) > div {
+body :where(form) > div {
     min-height: 3em;
     width: min(100%, 100%);
     margin-left: 3em;
 }
-body > main :where(form) > div > input {
+body :where(form) > div > input {
     height: 3em;
     width: min(100%, 43.3em);
     border: 1px solid hsl(0, 0%, 85%);
 }
-body > main :where(form) > div > textarea {
+body :where(form) > div > textarea {
     width: min(100%, 43.5em);
     border: 1px solid hsl(0, 0%, 85%);
 }
-body > main :where(form) > div > div > button {
+body :where(form) > div > div > button {
     height: 2.5em;
     width: min(100%, 10em);
     border: 1px solid hsl(0, 0%, 85%);
     border-radius: .3em;
 }
-body > main :where(form) > div > p {
+body :where(form) > div > p {
     font-weight: calc(250 + 200);
     color: hsl(0, 0%, 20%);
     text-decoration: none;
@@ -144,7 +141,7 @@ body > main :where(form) > div > p {
 }
 /* footer */
 body > footer {
-    height: 2em;
+    height: 3.5em;
     width: min(100%, 100%);
     display: flex;
     align-items: center;
@@ -206,6 +203,9 @@ body > main :is(section) > article :where(p) {
     font-size: .9em;
     margin-left: .4em
 }
+body > main :is(section) > article :where(h2) {
+    margin-left: .4em
+}
 body > main :is(section) > article :where(div) {
     height: 3em;
     width: 3em;
@@ -239,4 +239,10 @@ body > main :is(section) > article > span {
     color: hsl(0, 0%, 20%);
     text-decoration: none;
     font-size: .8em;
+}
+.content {
+    flex-direction: column;
+    gap: .2em;
+    justify-content: flex-start;
+    align-items: flex-start;
 }

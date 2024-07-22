@@ -22,18 +22,25 @@ router.route('/')
             return user.email === request.body.email;
         });
 
-        const passwordMatch = await bcrypt.compare(request.body.password, foundAccount.password);
-        // console.log(foundUser)
+        console.log(foundUser)
+        console.log(foundAccount)
         try {
+        const passwordMatch = await bcrypt.compare(request.body.password, foundAccount.password);
+
             if(!passwordMatch) {
-                response.sendStatus(403); 
+                response.sendStatus(402); 
                 return;
-            } else {
+            }else if(!foundAccount || !foundUser) {
+                response.sendStatus(404); 
+                return;
+            }else {
                 response.cookie("loggedInUser", foundUser.email, { maxAge: 1800000, httpOnly: false })
                 response.redirect('http://127.0.0.1:3000/application.com/profile');
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            response.sendStatus(404); 
+                return;
         }
     })
 
