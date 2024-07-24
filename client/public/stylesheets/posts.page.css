@@ -13,6 +13,7 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 1em;
+    position: relative;
 }
 
 /* navbar */
@@ -102,7 +103,7 @@ body > main {
     background-color: hsl(0, 0%, 97%);
 }
 body :where(form) {
-    height: 30em;
+    height: 100%;
     /* width: min(100%, 100%); */
     width: min(100%, 0%);
     z-index: 2;
@@ -110,8 +111,8 @@ body :where(form) {
     overflow: hidden;
     position: absolute;
     right: 0px;
-    bottom: 0px;
-    background-color: hsl(0, 0%, 98%)
+    top: 0px;
+    background-color: hsl(0, 0%, 98%);
 }
 body :where(form) > div {
     min-height: 3em;
@@ -141,11 +142,16 @@ body :where(form) > div > p {
 }
 /* footer */
 body > footer {
-    height: 3.5em;
+    height: 4em;
     width: min(100%, 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    z-index: 2;
+    left: 0px;
+    bottom: 0px;
+    background-color: #fff;
 }
 body > footer > div {
     height: 100%;

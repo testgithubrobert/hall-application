@@ -47,15 +47,19 @@ body > nav :is(div) > span {
 
 /* main */
 body > main {
-    height: 29em;
-    width: min(100%, 100%);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1em;
+   flex: 1 0 auto
 }
-
+body > main > h1 {
+   margin-left: 1em;
+}
+body > main > p {
+    font-weight: calc(200 + 200);
+    color: hsl(0, 0%, 20%);
+    text-decoration: none;
+    margin-left: 2em;
+    font-size: .9em;
+    max-width: 80em;
+}
 
 /* footer */
 body > footer {

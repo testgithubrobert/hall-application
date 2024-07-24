@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const path = require('node:path');
+const authorization = require('../jwt/token.verify');
+const jwt = require('jsonwebtoken');
+const configuration = require('../../model/config/configuration.json');
+const refreshToken = jwt.sign({ name: "just" }, configuration.tokens.secrete_key, { expiresIn: '1d' });
 
 // posts
 router.get('/', (request, response) => {
     response.contentType = 'text/html';
         response.statusCode = 200;
-
         request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/posts.page.html',)), 1000) : (async function(){ return }());
 });
 
@@ -16,9 +19,10 @@ router.use('/posts', require('./handler/router.handler'));
 router.get('/people', (request, response) => {
     response.contentType = 'text/html';
         response.statusCode = 200;
+        request.headers['authorization'] = refreshToken;
         
         request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../client/view/people.page.html',)), 1000) : (async function(){ return }());
-});
+}); 
 
 // about
 router.get('/about', (request, response) => {
@@ -50,4 +54,3 @@ router.get('/profile', (request, response) => {
 const controller = require('../errors/404.controller');
 router.use(controller.NotFound)
 module.exports = router;
-

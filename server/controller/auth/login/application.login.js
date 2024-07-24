@@ -3,6 +3,9 @@ const router = express.Router();
 const path = require('node:path');
 const pool_connection = require('../../../model/connection/model.connection');
 const bcrypt = require('bcrypt');
+const authorization = require('../../jwt/token.verify');
+const jwt = require('jsonwebtoken');
+const configuration = require('../../../model/config/configuration.json');
 
 // login
 router.route('/')
@@ -12,23 +15,18 @@ router.route('/')
 
             request ? global.setTimeout(() => response.sendFile(path.join(__dirname, '../../../../client/view/login.page.html',)), 1000) : (async function(){ return }());
     }).post(async (request, response) => {
-        const availableAcounts = await pool_connection.query("SELECT * FROM accounts");
-        const availableUsers = await pool_connection.query("SELECT * FROM users");
+        const token = jwt.sign(request.body, configuration.tokens.secrete_key, { expiresIn: '1d' });
+        const registeredAccounts = await pool_connection.query("SELECT * FROM accounts");
+        const registeredUsers = await pool_connection.query("SELECT * FROM users");
 
-        const foundAccount = availableAcounts[0].find((account) => {
-            return account.email === request.body.email;
-        });
-        const foundUser = availableUsers[0].find((user) => {
-            return user.email === request.body.email;
-        });
+        const foundAccount = registeredAccounts[0].find((account) => { return account.email === request.body.email });
+        const foundUser = registeredUsers[0].find((user) => { return user.email === request.body.email });
 
-        console.log(foundUser)
-        console.log(foundAccount)
         try {
         const passwordMatch = await bcrypt.compare(request.body.password, foundAccount.password);
 
             if(!passwordMatch) {
-                response.sendStatus(402); 
+                response.sendStatus(400); 
                 return;
             }else if(!foundAccount || !foundUser) {
                 response.sendStatus(404); 

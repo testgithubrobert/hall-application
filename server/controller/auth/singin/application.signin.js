@@ -28,16 +28,13 @@ router.route('/')
                 response.sendStatus(400);
             } else {
                 // insert and save new account data to the database 
-                await pool_connection.query(`INSERT INTO accounts VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${2}, ${5}, ${date}, ${JSON.stringify(hashedPassword)} )`);
- 
+                await pool_connection.query(`INSERT INTO accounts VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${0}, ${0}, ${date}, ${JSON.stringify(hashedPassword)} )`);
                 // insert and save new account data to the database to show accounts history
-                await pool_connection.query(`INSERT INTO accounts_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${2}, ${5}, ${date}, ${JSON.stringify(hashedPassword)} )`);
-
+                await pool_connection.query(`INSERT INTO accounts_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${0}, ${0}, ${date}, ${JSON.stringify(hashedPassword)} )`);
                 // create new user
-                await pool_connection.query(`INSERT INTO users VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${2}, ${5}, ${date})`);
-
+                await pool_connection.query(`INSERT INTO users VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${0}, ${0}, ${date})`);
                 // create new user history
-                await pool_connection.query(`INSERT INTO users_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${2}, ${5}, ${date})`);
+                await pool_connection.query(`INSERT INTO users_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.first_name)}, ${JSON.stringify(request.body.last_name)}, ${JSON.stringify(request.body.email)}, ${0}, ${0}, ${date})`);
 
                 response.status(201).send('You can now log into your account <a href="http://127.0.0.1:3000/application.com/login?query=login">Log in</a>')
             }

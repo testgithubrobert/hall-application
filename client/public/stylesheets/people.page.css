@@ -16,62 +16,33 @@ body {
 
 /* navbar */
 body > nav {
-    height: 3em;
-    width: min(100%, 80em);
+    height: 3.5em;
+    width: min(100%, 100%);
     background-color: hsl(0, 0%, 90%);
-    border-radius: .4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid hsl(0, 0%, 85%);
-    margin-top: .8em;
-}
-body > nav :is(div) {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    border: 1px solid hsl(0, 0%, 85%);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
 }
-body > nav :is(.search-bar) {
-    width: min(100%, 60em);
-    justify-content: flex-end;
-}
-body > nav :is(div) > a {
-    font-weight: calc(200 + 200);
-    color: hsl(0, 0%, 20%);
-    text-decoration: none;
-    margin-right: 1em;
-}
-body > nav :is(div) > span {
+body > nav > span {
     font-weight: calc(250 + 300);
     color: hsl(0, 0%, 20%);
     text-decoration: none;
     margin-left: 1em;
 }
-body > nav :is(div) > input {
-    height: 3em;
-    width: min(100%, 50em);
-    border: 1px solid hsl(0, 0%, 80%);
-    margin-left: 2em;
-}
-body > nav :is(div) > button {
-    height: 3em;
-    width: min(100%, 7em);
-    border: 1px solid hsl(0, 0%, 80%);
-    background-color: hsl(0, 0%, 80%);
-}
 
 /* main */
 body > main {
-    height: 29em;
+    flex: 1 0 auto;
     width: min(100%, 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: .5em;
     border: 1px solid #eee;
-    position: relative;
-    overflow-y: scroll;
 }
 body > main> section {
     height: 7em;
@@ -98,25 +69,30 @@ body > main> section > .profile-information {
     gap: 0em;
     flex-direction: column;
 }
-body > main> section > div >span {
-    font-weight: calc(250 + 200);
+body > main> section > div > span {
+    font-weight: calc(350 + 200);
     color: #000000;
     text-decoration: none;
     font-size: .9em;
 }
 body > main> section > div > button {
-    height: 2em;
+    height: 2.5em;
     width: 5em;
     margin-top: 13px;
 }
 
 /* footer */
 body > footer {
-    height: 5em;
+    height: 4em;
     width: min(100%, 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    z-index: 2;
+    left: 0px;
+    bottom: 0px;
+    background-color: #fff;
 }
 body > footer > div {
     height: 100%;
@@ -150,4 +126,24 @@ body > footer > div :where(span) {
     text-decoration: none;
     margin-right: 1em;
     font-size: .8em;
+}
+#loader {
+    height: 7em;
+    width: 7em;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 40em;
+    border: 1em solid hsl(0, 0%, 85%);
+    border-bottom: 1em solid hsl(0, 0%, 3%);
+    animation: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
 }

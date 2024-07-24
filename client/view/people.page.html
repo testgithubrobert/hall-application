@@ -11,19 +11,11 @@
     </head>
     <body>
         <nav>  
-            <div style="width: 17em;"> 
-                <span>PostHall</span>
-            </div>
-            <div class="search-bar">
-                <input type="search" name="search" id="search" placeholder="find people..." title="find accounts" required>
-                <button type="button" id="find-button">find</button>
-                <!-- if u click the srch ../../img/profile-image.pnginput let the user list disappear and display a word 'search user here' -->
-            </div>
+            <span>People</span>
         </nav>
         <main>
             <br>
-            <br>
-            <br>
+            <div id="loader"></div>
         </main> 
         <footer>  
             <div> 
@@ -38,7 +30,7 @@
                 </ul>
             </div>
             <div style="justify-content: flex-end;">
-                <span>Made by <a href="#" title="developer">Robb</a></span>
+                <span>Logged in user profile: <a href="http://127.0.0.1:3000/application.com/profile?query=profile" id="logged-in-user">none</a></span>
             </div>
         </footer>
     </body>

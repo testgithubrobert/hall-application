@@ -13,13 +13,13 @@ var { v4: uuid } = require('uuid');
 const filePath = require('node:path');
 const fs = require('node:fs');
 const fsp = require('node:fs').promises;
-const format = require('date-fns').format;
+const format = require('date-fns').format; 
 
 const middleware = {
     logs: function (request, response, next) {
         return __awaiter(this, void 0, void 0, function* () {
             response.statusCode = 200;
-            const logs = `${uuid()}\t${request.headers.host}${request.filePath}\tmethod=${request.method}\t${format(new Date(), "dd/MM/yyyy\tHH:mm:ss")}\n`;
+            const logs = `${uuid()}\t${request.headers.host}${request.path}\tmethod=${request.method}\t${format(new Date(), "dd/MM/yyyy\tHH:mm:ss")}\n`;
             try {
                 if (!fs.existsSync(filePath.join(__dirname, '..', '..', 'logs'))) {
                     fsp.mkdir(filePath.join(__dirname, '..', '..', 'logs'));

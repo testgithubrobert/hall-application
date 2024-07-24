@@ -20,10 +20,10 @@ router.route('/')
             response.statusCode = 201;
 
             // create new post
-            await pool_connection.query(`INSERT INTO posts VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title)}, ${JSON.stringify(request.body.content)}, ${0})`);
+            await pool_connection.query(`INSERT INTO posts VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title.toLocaleUpperCase())}, ${JSON.stringify(request.body.content)}, ${0})`);
 
             // create posts history for those posted
-            await pool_connection.query(`INSERT INTO posts_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title)}, ${JSON.stringify(request.body.content)}, ${0})`);
+            await pool_connection.query(`INSERT INTO posts_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title.toLocaleUpperCase())}, ${JSON.stringify(request.body.content)}, ${0})`);
             request ? global.setTimeout(() => response.redirect('/application.com/posts/'), 1000) : (async function(){ return }());
     });
 
