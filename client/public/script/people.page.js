@@ -83,12 +83,12 @@ const jsonData = await fetching.json();
         let user = jsonData.find(user => { return user.email.includes(data.slice(13)) })
     
         if(!user.first_name || !user.last_name || typeof user === 'undefined') {
-            currentUser.textContent = 'none';
+            currentUser.textContent = 'No profile!';
             return;
         } else currentUser.textContent = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`;
         window.document.getElementById('postedUser').value  = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`
     } catch (error) {
-        currentUser.textContent = 'none';
+        currentUser.textContent = 'No profile!';
         // console.log(error.message)
     }
 }());
