@@ -128,8 +128,8 @@ body > footer > div :where(span) {
     font-size: .8em;
 }
 #loader {
-    height: 7em;
-    width: 7em;
+    height: 4em;
+    width: 4em;
     background-color: hsl(0, 0%, 100%);
     border-radius: 100%;
     display: flex;
@@ -137,8 +137,8 @@ body > footer > div :where(span) {
     justify-content: center;
     position: absolute;
     left: 40em;
-    border: 1em solid hsl(0, 0%, 85%);
-    border-bottom: 1em solid hsl(0, 0%, 3%);
+    border: .8em solid hsl(0, 0%, 85%);
+    border-bottom: .8em solid hsl(0, 0%, 3%);
     animation: rotate;
     animation-iteration-count: infinite;
     animation-duration: 1s;
@@ -146,4 +146,8 @@ body > footer > div :where(span) {
 }
 @keyframes rotate {
     100% { transform: rotate(360deg); }
+}
+.warning {
+    text-align: center;
+    color:hsl(0, 0%, 70%)
 }

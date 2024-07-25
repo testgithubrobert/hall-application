@@ -252,3 +252,7 @@ body > main :is(section) > article > span {
     justify-content: flex-start;
     align-items: flex-start;
 }
+.warning {
+    text-align: center;
+    color:hsl(0, 0%, 70%)
+}

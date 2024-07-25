@@ -6,6 +6,7 @@ const cancelPost = window.document.querySelector('.cancel');
 const submitPost = window.document.querySelector('.submit');
 const title = window.document.getElementById('title');
 const content = window.document.querySelector('textarea');
+var text = window.document.createElement('h2');
 
 displayPostFormButton.addEventListener('click', (e) => { postForm.style.width = `min(100%, 100%)` });
 cancelPost.addEventListener('click', (e) =>  postForm.style.width = `min(0%, 0%)`);
@@ -52,39 +53,42 @@ async function createPost(element) {
 }
 
 (async function(){
-    const postsData = await fetch('http://127.0.0.1:3000/application.com/api/posted-posts-data/posts', {
-        method: "GET",
-        headers: {
+    const postsData = await fetch('http://127.0.0.1:3000/application.com/api/posted-posts-data/posts', { method: "GET", headers: {
             "content-type": "application/json"
-        }
-    });
+        }});
 
     let postsJsonData = await postsData.json();
-
-    postsJsonData.forEach(element => {
-        createPost(element);
-    });
-}())
+    
+    if(postsJsonData.length < 1) {
+        text.textContent = 'No posts posted yet!';
+        text.setAttribute('class', 'warning');
+        window.document.querySelector('main').append(text);
+        return;
+    } else postsJsonData.forEach(element => { createPost(element) });
+}());
 
 const currentUser = window.document.getElementById('logged-in-user');
 
 (async function(){
-    const usersData = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', {
-        method: "GET",
-        headers: {
+    const usersData = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', { method: "GET", headers: {
             "content-type": "application/json"
-        }
-    });
+        }});
 
-    const usersJsonData = await usersData.json();
-    const data = decodeURIComponent(document.cookie)
-
-    let user = usersJsonData.find(user => {
-        return user.email.includes(data.slice(13));
-    })
-
-    currentUser.textContent = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`;
-    window.document.getElementById('postedUser').value  = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`;
+    try {
+        const usersJsonData = await usersData.json();
+        const data = decodeURIComponent(document.cookie)
+    
+        let user = usersJsonData.find(user => { return user.email.includes(data.slice(13)) })
+    
+        if(!user.first_name || !user.last_name || typeof user === 'undefined') {
+            currentUser.textContent = 'none';
+            return;
+        } else currentUser.textContent = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`;
+               window.document.getElementById('postedUser').value  = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`
+    } catch (error) {
+        currentUser.textContent = 'none';
+        // console.log(error.message)
+    }
 }());
 
 
@@ -93,13 +97,9 @@ async function likePost(element, object) {
     element.addEventListener('click', async () => {
         element.disabled = true;
         object.likes += 1;
-        await fetch('http://127.0.0.1:3000/application.com/api/posted-posts-data/posts', {
-            method: "PUT",
-            headers: {
+        await fetch('http://127.0.0.1:3000/application.com/api/posted-posts-data/posts', { method: "PUT", headers: {
                 "content-type": "application/json"
-            },
-            body: JSON.stringify(object)
-        });
+            }, body: JSON.stringify(object) });
 
         window.location.reload(); // reload the page in order to get the latest updates on a post
         window.setTimeout(() => element.disabled = false, 4000);
