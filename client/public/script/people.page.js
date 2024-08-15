@@ -5,7 +5,7 @@ window.setTimeout(() => loader.remove(), 1000);
 var text = window.document.createElement('h2');
 
 (async function(){
-    const fetching = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', { method: "GET", headers: {
+    const fetching = await fetch('/application.com/api/registered-users-data/users', { method: "GET", headers: {
             "content-type": "application/json"
         }});
 
@@ -36,7 +36,7 @@ let jsonData = await fetching.json();
         button.classList.add('add-friend');
         button.textContent = 'add friend';
 
-        const fetching = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', { method: "GET", headers: {
+        const fetching = await fetch('/application.com/api/registered-users-data/users', { method: "GET", headers: {
             "content-type": "application/json"
         }});
 
@@ -47,7 +47,7 @@ const jsonData = await fetching.json();
     user.points += Math.floor(Math.random() * 5); // set the users points to increase after req sent
         button.addEventListener('click', async () => {
             button.disabled = true;
-                await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', { method: "PUT", headers: {
+                await fetch('/application.com/api/registered-users-data/users', { method: "PUT", headers: {
                         "content-type": "application/json"
                     }, body: JSON.stringify(user) });
 
@@ -72,7 +72,7 @@ const jsonData = await fetching.json();
 
 
 (async function(){
-    const fetching = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', { method: "GET", headers: {
+    const fetching = await fetch('/application.com/api/registered-users-data/users', { method: "GET", headers: {
             "content-type": "application/json"
         }});
 
@@ -91,4 +91,20 @@ const jsonData = await fetching.json();
         currentUser.textContent = 'No profile!';
         // console.log(error.message)
     }
+}());
+
+(async function(){
+    const fetching = await fetch('/application.com/api/registered-users-data/users', {
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    });
+
+    const jsonData = await fetching.json();
+    const cookies = decodeURIComponent(document.cookie);
+
+    let user = jsonData.find(user => { return user.email.includes(cookies.slice(13)) });
+
+    currentUser.textContent = `${user.first_name.toLocaleUpperCase()} ${user.last_name.toLocaleUpperCase()}`
 }());

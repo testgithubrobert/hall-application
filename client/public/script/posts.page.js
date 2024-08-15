@@ -1,3 +1,8 @@
+const socket = new WebSocket("ws://localhost:3000");
+socket.addEventListener('open', (soc) => socket.send('connection request made!'));
+socket.addEventListener('message', (message) => console.log(message));
+socket.addEventListener('error', (error) => console.log(error));
+
 // import createPost from "./module/posts/module.posts";
 
 const postForm = window.document.querySelector('form');
@@ -9,7 +14,10 @@ const content = window.document.querySelector('textarea');
 var text = window.document.createElement('h2');
 
 displayPostFormButton.addEventListener('click', (e) => { postForm.style.width = `min(100%, 100%)` });
-cancelPost.addEventListener('click', (e) =>  postForm.style.width = `min(0%, 0%)`);
+cancelPost.addEventListener('click', (e) =>  { 
+    title.value = '';
+    content.value = '';
+    postForm.style.width = `min(0%, 0%)` });
 submitPost.addEventListener('submit', (e) => { title.value = ''; content.value = '' });
 
 async function createPost(element) {
@@ -17,6 +25,30 @@ async function createPost(element) {
     const profile = window.document.createElement('article');
     const content = window.document.createElement('article');
     const article = window.document.createElement('article');
+    const form = window.document.createElement('div');
+    const input = window.document.createElement('input');
+    input.maxLength = '50'
+    const comment = window.document.createElement('button');
+
+    input.type = 'text';
+    comment.type = 'button';
+    comment.textContent = 'comment';
+
+    comment.addEventListener('click', () => {
+        if(input.value.length < 1 || input.value === '') {
+            return ''
+        } else {
+            // update comments for post
+            alert(false)
+        }
+    });
+
+    input.name = 'comment';
+    input.placeholder = 'comment here...';
+
+    form.classList.add('comment-scetion');
+    form.append(input, comment);
+
     const div = window.document.createElement('div');
     const img = window.document.createElement('img');
     img.src = '../../img/profile-image.png'
@@ -37,8 +69,11 @@ async function createPost(element) {
     postTitle.textContent = element.title;
 
     const button = window.document.createElement('button');
+
+
     button.textContent = 'like';
     button.classList.add('like-button')
+    button.classList.add('comment-button')
 
     const likes = window.document.createElement('span');
     likes.textContent = element.likes
@@ -46,14 +81,14 @@ async function createPost(element) {
     article.append(button, likes);
     content.classList.add('content')
     content.append(postTitle, paragraph);
-    section.append(profile, content, article);
+    section.append(profile, content, form, article);
     likePost(button, element) // add likes to a certain post
 
     window.document.querySelector('main').append(section);
 }
 
 (async function(){
-    const postsData = await fetch('http://127.0.0.1:3000/application.com/api/posted-posts-data/posts', { method: "GET", headers: {
+    const postsData = await fetch('/application.com/api/posted-posts-data/posts', { method: "GET", headers: {
             "content-type": "application/json"
         }});
 
@@ -70,7 +105,7 @@ async function createPost(element) {
 const currentUser = window.document.getElementById('logged-in-user');
 
 (async function(){
-    const usersData = await fetch('http://127.0.0.1:3000/application.com/api/registered-users-data/users', { method: "GET", headers: {
+    const usersData = await fetch('/application.com/api/registered-users-data/users', { method: "GET", headers: {
             "content-type": "application/json"
         }});
 
@@ -97,7 +132,7 @@ async function likePost(element, object) {
     element.addEventListener('click', async () => {
         element.disabled = true;
         object.likes += 1;
-        await fetch('http://127.0.0.1:3000/application.com/api/posted-posts-data/posts', { method: "PUT", headers: {
+        await fetch('/application.com/api/posted-posts-data/posts', { method: "PUT", headers: {
                 "content-type": "application/json"
             }, body: JSON.stringify(object) });
 

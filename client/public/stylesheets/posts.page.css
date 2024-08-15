@@ -15,6 +15,10 @@ body {
     gap: 1em;
     position: relative;
 }
+:root {
+    --primary-color: #0066ff;
+    --secondary-color: hsl(216, 100%, 27%);
+}
 
 /* navbar */
 body > nav {
@@ -49,12 +53,6 @@ body > nav :is(div) > a > button {
     background-color: transparent;
     border: none;
 }
-body > nav :is(div) > a > button:is(:hover) {
-    background-color: #eee;
-}
-body > nav :is(div) > button:is(:hover) {
-    background-color: #eee;
-}
 body > nav :is(div) > span {
     font-weight: calc(250 + 300);
     color: hsl(0, 0%, 20%);
@@ -62,12 +60,13 @@ body > nav :is(div) > span {
     margin-left: 1em;
 }
 body > nav :is(div) > button {
-    height: 100%;
-    width: min(100%, 4em);
-    padding: 1px;
-    margin-left: 1em;
-    background-color: transparent;
+    height: 3em;
+    width: 10em;
+    margin-right: 1em;
+    background-color: var(--primary-color);
+    color: #fff;
     border: none;
+    border-radius: .2em
 }
 
 /* header */
@@ -82,12 +81,6 @@ body > main > header {
     top: 3em
 }
 
-#display-post-form {
-    height: 2.5em;
-    width: min(100%, 10em);
-    padding: 1px;
-    border: 1px solid #101010
-}
 
 /* main */
 body > main {
@@ -103,13 +96,13 @@ body > main {
     background-color: hsl(0, 0%, 97%);
 }
 body :where(form) {
-    height: 100%;
+    height: 40em;
     /* width: min(100%, 100%); */
     width: min(100%, 0%);
     z-index: 2;
     background-color: #fff;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     right: 0px;
     top: 0px;
     background-color: hsl(0, 0%, 98%);
@@ -133,6 +126,8 @@ body :where(form) > div > div > button {
     width: min(100%, 10em);
     border: 1px solid hsl(0, 0%, 85%);
     border-radius: .3em;
+    color: #fff;
+    background-color: var(--primary-color);
 }
 body :where(form) > div > p {
     font-weight: calc(250 + 200);
@@ -239,6 +234,9 @@ body > main :is(section) > article > button {
     height: 2em;
     margin-left: .4em;
     width: 5em;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none
 }
 body > main :is(section) > article > span {
     font-weight: calc(250 + 200);
@@ -255,4 +253,32 @@ body > main :is(section) > article > span {
 .warning {
     text-align: center;
     color:hsl(0, 0%, 70%)
+}
+
+/* comment */
+.comment-scetion {
+    height: 5em;
+    width: min(100%, 99%);
+    margin-left: .5em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5em
+}
+.comment-scetion > input {
+    height: 3em;
+    width: 40em;
+    border: 1px solid hsl(0, 0%, 85%);
+}
+.comment-scetion > button {
+    height: 3em;
+    width: 7em;
+    border: 1px solid hsl(0, 0%, 95%);
+    background-color: brown;
+    color: #fff;
+}
+
+p {
+    max-width: 73em
 }
