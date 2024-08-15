@@ -30,6 +30,15 @@ body > main > section {
     width: min(100%, 90%);
     margin-left: 2em;
 }
+body > main > article {
+    height: 2em;
+    width: min(100%, 90%);
+    margin-left: 2em;
+}
+body > main > article :is(h2) {
+    font-size: 3em;
+    font-weight: bold;
+}
 body > main> section > div {
     height: 10em;
     width: min(100%, 10em);

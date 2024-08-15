@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="backend-developer" content="">
         <meta name="frontend-developer" content="">
-        <title>Document</title>
+        <title>Posts</title>
         <link rel="stylesheet" href="../../stylesheets/posts.page.css">
         <script src="../../script/posts.page.js" type="module" defer></script>
     </head>
@@ -13,7 +13,6 @@
         <nav>
             <div>
                 <span>Posts</span>
-                <a href="/application.com/people?query=people"><button type="button" id="people" title="people">People</button></a>
             </div>
             <div style="justify-content: flex-end;">
                 <button type="button" class="display-post-form" id="display-post-form" title="New Post">New Post</button>
@@ -22,7 +21,7 @@
         <form accept-charset="UTF-8" method="post" action="#" id="">
             <div>
                 <br>
-                <h3>New Post</h3>
+                <h1>Create New Post</h1>
             <br>
             <input type="text" name="title" id="title" required maxlength="50" placeholder="title...">
             <p>Keep the title short, less than 50 characters</p>
@@ -30,12 +29,12 @@
             <textarea name="content" id="content" cols="30" rows="10" placeholder="type here..." maxlength="500" required></textarea>
             <br>
             <br>
-            <input type="text" name="postedUser" id="postedUser" required maxlength="50" placeholder="posted by...">
+            <input type="text" name="postedUser" id="postedUser" required maxlength="50" placeholder="posted by..." readonly>
                 <br>
                 <br>
             <div>
                 <button type="submit" id="submit" class="submit" name="submit" title="post post">post</button>
-                <button type="reset" id="cancel" class="cancel" name="cancel" title="cancel post">cancel</button>
+                <button type="button" id="cancel" class="cancel" name="cancel" title="cancel post" style="background-color: brown;">cancel</button>
             </div>
             </div>
         </form>
@@ -46,6 +45,7 @@
             <div>
                 <ul>
                     <li><a href="/application.com/about?query=about">About</a></li>
+                    <li><a href="/application.com/people?query=people">People</a></li>
                     <li><a href="/application.com/signin?query=signin"sign in new account">sign in </a></li>
                     <li><a href="/application.com/login?query=login"login to account">login </a></li>
                     <li><a href="https://github.com/testgithubrobert/hall-application">GitHub</a></li>

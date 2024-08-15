@@ -25,6 +25,12 @@ router.route('/')
             // create posts history for those posted
             await pool_connection.query(`INSERT INTO posts_history VALUES( ${JSON.stringify(uuid())}, ${JSON.stringify(request.body.postedUser)}, ${date}, ${JSON.stringify(request.body.title.toLocaleUpperCase())}, ${JSON.stringify(request.body.content)}, ${0})`);
             request ? global.setTimeout(() => response.redirect('/application.com/posts/'), 1000) : (async function(){ return }());
+    })
+    .put(async (request, response) => {
+        response.contentType = 'text/html';
+            response.statusCode = 201;
+
+            await pool_connection.query(`UPDATE posts SET comments = ${JSON.stringify(request.body.comment)} WHERE title = ${JSON.stringify(request.body.title)}`);
     });
 
 module.exports = router;
